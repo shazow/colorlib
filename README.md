@@ -27,15 +27,21 @@ Created by Andrey Petrov, released under the MIT license.
   Example: [255,255,255], 0.5 -> "rgba(255,255,255,0.5)"
 
 * rgb_to_hsv(rgb)
+
   Convert an rgb tuple to an hsv tuple.
+
   Example: [50,50,100] -> [170,127.5,100]
 
 * hsv_to_rgb(hsv)
+
   Convert an hsv tuple to an rgb tuple.
+
   Example: [170,127.5,100] -> [50,50,100]
 
 * invert_rgb(rgb)
+
   Invert an rgb value.
+
   Example: [255, 0, 255] -> [0, 255, 0]
 
 * blend(filter, c1, c2)
