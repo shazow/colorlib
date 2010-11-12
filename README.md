@@ -1,8 +1,8 @@
 # Colorlib
 
-Colorlib is a collection of color manipulation functions in Javascript. Colorlib was originally created for [colorblendy.com](http://colorblendy.com).
+Colorlib is a collection of color manipulation functions in Javascript.
 
-Created by Andrey Petrov, released under the MIT license.
+Released under the MIT license.
 
 ## Contents
 
@@ -79,6 +79,12 @@ Supported blend filters:
 * Negate
 
 Blend filters allow you to perform color transformations similar to how you would apply a blend mode on a layer in Photoshop. More on blend modes at [Wikipedia:Blend_modes](http://en.wikipedia.org/wiki/Blend_modes).
+
+
+## Demo
+
+[colorblendy.com](http://colorblendy.com) is powered by colorlib.js
+
 
 ## TODO
 
