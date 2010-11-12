@@ -47,12 +47,12 @@ function rgb_to_css(rgb) {
 }
 
 function rgb_a_to_css(rgb, a) {
-    /* [255,255,255,0.5] -> "rgba(255,255,255,0.5)" */
+    /* [255,255,255], 0.5 -> "rgba(255,255,255,0.5)" */
     return 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + a + ')';
 }
 
-function rgb_to_hsv(rgb){
-    /* [50,50,100] -> [170, 127.5, 100]
+function rgb_to_hsv(rgb) {
+    /* [50,50,100] -> [170,127.5,100]
      * (Based on Python's colorsys.rgb_to_hsv)
      */
     var r = rgb[0]/255, g = rgb[1]/255, b = rgb[2]/255;
@@ -75,7 +75,7 @@ function rgb_to_hsv(rgb){
 }
 
 function hsv_to_rgb(hsv) {
-    /* [170, 127.5, 100] -> [50,50,100]
+    /* [170,127.5,100] -> [50,50,100]
      * (Based on Python's colorsys.hsv_to_rgb)
      */
     var h = hsv[0], s = hsv[1], v = hsv[2];
