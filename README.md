@@ -71,12 +71,12 @@ Given a filter name and two rgb colors, apply the filter on each channel between
 
 Supported blend filters:
 
-* Multiply
-* Screen
-* Overlay
-* Dodge
-* Burn
-* Negate
+* multiply
+* screen
+* overlay
+* dodge
+* burn
+* negate
 
 Blend filters allow you to perform color transformations similar to how you would apply a blend mode on a layer in Photoshop. More on blend modes at [Wikipedia:Blend_modes](http://en.wikipedia.org/wiki/Blend_modes).
 
