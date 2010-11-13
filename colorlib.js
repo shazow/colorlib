@@ -52,12 +52,12 @@ function rgb_a_to_css(rgb, a) {
 }
 
 function rgb_to_hsv(rgb) {
-    /* [50,50,100] -> [170,127.5,100]
+    /* [50,50,100] -> [0.66,0,100]
      * (Based on Python's colorsys.rgb_to_hsv)
      */
     var r = rgb[0]/255, g = rgb[1]/255, b = rgb[2]/255;
     var max = Math.max(r,g,b), min = Math.min(r,g,b);
-    if(max==min) return [0,0,max*255];
+    if(max==min) return [0,0,max];
 
     var v = max, s = (max-min) / max;
     var rc = (max-r) / (max-min),
@@ -71,23 +71,23 @@ function rgb_to_hsv(rgb) {
     h = (h/6.0) % 1.0;
     if(h<0) h += 1.0
 
-    return [h*255,s*255,v*255];
+    return [h, s, v];
 }
 
 function hsv_to_rgb(hsv) {
-    /* [170,127.5,100] -> [50,50,100]
+    /* [170,127.5,100] -> ?
      * (Based on Python's colorsys.hsv_to_rgb)
      */
-    var h = hsv[0], s = hsv[1], v = hsv[2];
+    var h = hsv[0], s = hsv[1], v = hsv[2] * 255;
 
     if(s==0) return [v,v,v];
 
-    var i = Math.floor((h * 6) / 255);
-    var f = ((h * 6) / 255) - i;
+    var i = Math.floor(h * 6);
+    var f = (h * 6) - i;
 
-    var p = v * (1 - s/255);
-    var q = v * (1 - s*f/255);
-    var t = v * (1 - s*(1 - f)/255);
+    var p = v * (1 - s);
+    var q = v * (1 - s*f);
+    var t = v * (1 - s*(1 - f));
 
     var i = i % 6;
     if(i==0) return [v, t, p];
@@ -103,7 +103,7 @@ function rgb_to_hsl(rgb) {
     var max = Math.max(r,g,b), min = Math.min(r,g,b);
     var h, s, l = (min+max)/2;
 
-    if(min == max) return [0, 0, l*255];
+    if(min == max) return [0, 0, l];
 
     if(l <= 0.5) s = (max-min) / (max+min);
     else s = (max-min) / (2-max-min);
@@ -117,11 +117,11 @@ function rgb_to_hsl(rgb) {
     else h = 4 + gc - rc;
 
     h = (h/6) % 1;
-    return [h*255, s*255, l*255];
+    return [h, s, l];
 }
 
 function hsl_to_rgb(hsl) {
-    var h = hsl[0]/255, s = hsl[1]/255, l = hsl[2]/255;
+    var h = hsl[0], s = hsl[1], l = hsl[2];
     var m1, m2;
 
     if(s == 0) return [l*255, l*255, l*255];
