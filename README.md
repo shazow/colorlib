@@ -88,7 +88,7 @@ Blend filters allow you to perform color transformations similar to how you woul
 
 ## TODO
 
-* Unit tests
+* More unit tests
 * More blend modes
 
 Contributions are welcome. Please fork or open an issue.
