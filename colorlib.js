@@ -120,19 +120,21 @@ function rgb_to_hsl(rgb) {
     return [h*255, s*255, l*255];
 }
 
-
 function hsl_to_rgb(hsl) {
-    var h = hsl[0], s = hsl[1], l = hsl[2];
+    var h = hsl[0]/255, s = hsl[1]/255, l = hsl[2]/255;
     var m1, m2;
 
-    if(s == 0) return [l, l, l];
+    if(s == 0) return [l*255, l*255, l*255];
 
     if(l <= 0.5) m2 = l * (1+s);
     else m2 = l+s-(l*s);
 
     m1 = 2*l - m2;
+    var r = hue_to_rgb(m1, m2, h+(1/3)),
+        g = hue_to_rgb(m1, m2, h),
+        b = hue_to_rgb(m1, m2, h-(1/3));
 
-    return [hue_to_rgb(m1, m2, h+(1/3)), hue_to_rgb(m1, m2, h), hue_to_rgb(m1, m2, h-(1/3))];
+    return [255*r, 255*g, 255*b];
 }
 
 function hue_to_rgb(v1, v2, hue) {
@@ -153,7 +155,7 @@ function apply_filter(c1, c2, fn) {
     /* Given two colors and a filter function, apply the filter to each channel and return a new color. */
     return [fn(c1[0], c2[0]),
             fn(c1[1], c2[1]),
-            fn(c1[2], c2[2])]
+            fn(c1[2], c2[2])];
 }
 
 
