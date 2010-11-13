@@ -98,6 +98,51 @@ function hsv_to_rgb(hsv) {
     if(i==5) return [v, p, q];
 }
 
+function rgb_to_hsl(rgb) {
+    var r = rgb[0]/255, g = rgb[1]/255, b = rgb[2]/255;
+    var max = Math.max(r,g,b), min = Math.min(r,g,b);
+    var h, s, l = (min+max)/2;
+
+    if(min == max) return [0, 0, l*255];
+
+    if(l <= 0.5) s = (max-min) / (max+min);
+    else s = (max-min) / (2-max-min);
+
+    var rc = (max-r) / (max-min);
+    var gc = (max-g) / (max-min);
+    var bc = (max-b) / (max-min);
+
+    if(r == max) h = bc - gc;
+    else if(g == max) h = 2 + rc - bc;
+    else h = 4 + gc - rc;
+
+    h = (h/6) % 1;
+    return [h*255, s*255, l*255];
+}
+
+
+function hsl_to_rgb(hsl) {
+    var h = hsl[0], s = hsl[1], l = hsl[2];
+    var m1, m2;
+
+    if(s == 0) return [l, l, l];
+
+    if(l <= 0.5) m2 = l * (1+s);
+    else m2 = l+s-(l*s);
+
+    m1 = 2*l - m2;
+
+    return [hue_to_rgb(m1, m2, h+(1/3)), hue_to_rgb(m1, m2, h), hue_to_rgb(m1, m2, h-(1/3))];
+}
+
+function hue_to_rgb(v1, v2, hue) {
+   if(hue < 0) hue += 1;
+   if(hue > 1) hue -= 1;
+   if((6 * hue) < 1) return v1 + (v2 - v1) * 6 * hue;
+   if((2 * hue) < 1) return v2;
+   if((3 * hue) < 2) return v1 + (v2 - v1) * ((2 / 3) - hue) * 6;
+   return v1;
+}
 
 function invert_rgb(rgb) {
     /* [255, 0, 255] -> [0, 255, 0] */
