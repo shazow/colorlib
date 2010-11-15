@@ -1,4 +1,4 @@
-/* colorlib.js 1.0
+/* colorlib.js 1.1
  *
  * Collection of color manipulation functions.
  *

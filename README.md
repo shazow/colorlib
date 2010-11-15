@@ -4,6 +4,11 @@ Colorlib is a collection of color manipulation functions in Javascript.
 
 Released under the MIT license.
 
+## Versions
+
+* **1.1** HSL and HSV conversion functions now return 0-1.0 normalized values. Bug fix in HSL conversion.
+* **1.0** First release.
+
 ## Contents
 
 ### hex_to_rgb(hex)
@@ -45,15 +50,29 @@ Convert an rgb tuple with an alpha value to a CSS color value.
 
 Convert an rgb tuple to an hsv tuple.
 
-    rgb_to_hsv([50,50,100])
-    -> [170,127.5,100]
+    rgb_to_hsv([100,200,255])
+    (Approx) -> [0.56,0.61,1]
 
 ### hsv_to_rgb(hsv)
 
 Convert an hsv tuple to an rgb tuple.
 
-    hsv_to_rgb([170,127.5,100])
-    -> [50,50,100]
+    hsv_to_rgb([1,0.5,1])
+    -> [255,127.5,127.5]
+
+### rgb_to_hsl(rgb)
+
+Convert an rgb tuple to an hsl tuple.
+
+    rgb_to_hsl([100,200,255])
+    (Approx) -> [0.56,1,0.70]
+
+### hsl_to_rgb(hsv)
+
+Convert an hsl tuple to an rgb tuple.
+
+    hsl_to_rgb([1,0.5,1])
+    -> [255,255,255]
 
 ### invert_rgb(rgb)
 
