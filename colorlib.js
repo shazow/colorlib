@@ -52,7 +52,7 @@ function rgb_a_to_css(rgb, a) {
 }
 
 function rgb_to_hsv(rgb) {
-    /* [50,50,100] -> [0.66,0,100]
+    /*
      * (Based on Python's colorsys.rgb_to_hsv)
      */
     var r = rgb[0]/255, g = rgb[1]/255, b = rgb[2]/255;
@@ -75,7 +75,7 @@ function rgb_to_hsv(rgb) {
 }
 
 function hsv_to_rgb(hsv) {
-    /* [170,127.5,100] -> ?
+    /*
      * (Based on Python's colorsys.hsv_to_rgb)
      */
     var h = hsv[0], s = hsv[1], v = hsv[2] * 255;
@@ -116,7 +116,9 @@ function rgb_to_hsl(rgb) {
     else if(g == max) h = 2 + rc - bc;
     else h = 4 + gc - rc;
 
-    h = (h/6) % 1;
+    h = (h/6.0) % 1.0;
+    if(h<0) h += 1.0
+
     return [h, s, l];
 }
 
