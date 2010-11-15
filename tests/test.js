@@ -99,13 +99,34 @@ test("overlay", function() {
 });
 
 test("dodge", function() {
-
+    // FIXME: Confirm these against Photoshop or similar
+    var c1_c2_r = [
+        [[50,100,150],[100,100,100],[125,165,244]],
+        [[100,100,100],[50,100,150],[83,165,248]],
+        [[123,234,12],[90,40,180],[175,255,190]],
+        [[90,40,180],[123,234,12],[191,255,41]],
+    ];
+    run_blend_tests(c1_c2_r, 'dodge');
 });
 
 test("burn", function() {
-
+    // FIXME: Confirm these against Photoshop or similar
+    var c1_c2_r = [
+        [[50,100,150],[100,100,100],[0,0,0]],
+        [[100,100,100],[50,100,150],[0,0,0]],
+        [[123,234,12],[90,40,180],[0,20,0]],
+        [[90,40,180],[123,234,12],[0,121,0]],
+    ];
+    run_blend_tests(c1_c2_r, 'burn');
 });
 
 test("negate", function() {
-
+    // FIXME: Confirm these against Photoshop or similar
+    var c1_c2_r = [
+        [[50,100,150],[100,100,100],[150,200,250]],
+        [[100,100,100],[50,100,150],[150,200,250]],
+        [[123,234,12],[90,40,180],[213,236,192]],
+        [[90,40,180],[123,234,12],[213,236,192]],
+    ];
+    run_blend_tests(c1_c2_r, 'negate');
 });
