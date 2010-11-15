@@ -56,3 +56,50 @@ test("rgb <-> hsl", function() {
         approx(hsl_to_rgb(hsl), rgb, 'hsl_to_rgb([' + hsl + ']) -> [' + rgb + ']');
     }
 })
+
+module('Blend Modes');
+
+function run_blend_tests(data, mode) {
+    for(var i=0, stop=data.length; i<stop; i++) {
+        var current = data[i];
+        var c1 = current[0], c2 = current[1], r = current[2];
+
+        deepEqual(blend(mode, c1, c2), r, 'blend("' + mode + '", [' + c1 + '], [' + c2 + '] -> [' + r + ']');
+    }
+}
+
+test("multiply", function() {
+    var c1_c2_r = [
+        [[50,100,150],[100,100,100],[20,39,59]],
+        [[100,100,100],[50,100,150],[20,39,59]],
+        [[123,234,12],[90,40,180],[43,37,8]],
+        [[90,40,180],[123,234,12],[43,37,8]],
+    ];
+    run_blend_tests(c1_c2_r, 'multiply');
+});
+
+test("screen", function() {
+    var c1_c2_r = [
+        [[50,100,150],[100,100,100],[131,162,192]],
+        [[100,100,100],[50,100,150],[131,162,192]],
+        [[123,234,12],[90,40,180],[170,238,184]],
+        [[90,40,180],[123,234,12],[170,238,184]],
+    ];
+    run_blend_tests(c1_c2_r, 'screen');
+});
+
+test("overlay", function() {
+
+});
+
+test("dodge", function() {
+
+});
+
+test("burn", function() {
+
+});
+
+test("negate", function() {
+
+});
